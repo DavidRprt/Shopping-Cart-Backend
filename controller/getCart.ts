@@ -8,7 +8,7 @@ const getCart = async (req: Request, res: Response) => {
     res.json({ productsCart });
     console.log("El carrito se ha obtenido")
   } else {
-    res.json({ mensaje: "No hay productos en el carrito" });
+    res.json("No hay productos en el carrito");
   }
 };
 
