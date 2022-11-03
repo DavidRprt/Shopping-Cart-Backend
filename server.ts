@@ -1,7 +1,8 @@
 import express, { Express } from "express";
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const controllers = require("./controller");
+const cartControllers = require("./controller/cartController");
+const productControllers = require("./controller/productController");
 const product = require('./models/product');
 dotenv.config();
 
@@ -21,18 +22,18 @@ app.get('/', (req, res) => {
   res.send("Hello world");
 })
 
-app.get("/products", controllers.getProducts);
-app.get("/products/:productID", controllers.getSingleProduct);
-app.get("/carts", controllers.getCart);
-app.get("/carts/:userId", controllers.getSingleCart); 
+app.get("/products", productControllers.getProducts);
+app.get("/products/:productID", productControllers.getSingleProduct);
+app.get("/carts", cartControllers.getCart);
+app.get("/carts/:userId", cartControllers.getSingleCart); 
 
-app.post("/cart", controllers.addToCart);
-app.post("/products", controllers.addProduct);
+app.post("/cart", cartControllers.addToCart);
+app.post("/products", productControllers.addProduct);
 
-app.put("/cart/:productId/:userId/:amount?", controllers.changeAmount);
+app.put("/cart/:productId/:userId/:amount?", cartControllers.changeAmount);
 
-app.delete("/cart/delete", controllers.deleteFromCart);
-app.delete("/products", controllers.deleteProduct);
+app.delete("/cart/delete", cartControllers.deleteFromCart);
+app.delete("/products", productControllers.deleteProduct);
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`)
