@@ -21,6 +21,7 @@ const getSingleCart = async (req: Request, res: Response) => {
       res.json(user);
       // imprimimos el precio total del carrito
       console.log(totalPrice);
+
     }
   
     else if (!user) {

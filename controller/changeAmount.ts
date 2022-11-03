@@ -15,11 +15,11 @@ const changeAmount = async (req: Request, res: Response) => {
   const isInCart = userCart.products.find((obj: any) => obj.productId.toLowerCase().replace(/\s/g, '') === productId.toLowerCase().replace(/\s/g, '')); 
 
   if(!isItProducts){
-    res.json("El producto no se encuentra disponible");
+    res.send("El producto no se encuentra disponible");
  }
 
   else if(!isInCart){
-    res.json("El producto no se encuentra en el carrito");
+    res.send("El producto no se encuentra en el carrito");
  }
 
  else{
@@ -30,7 +30,7 @@ const changeAmount = async (req: Request, res: Response) => {
         res.json(userCart);
     }
     else{
-        res.json("No se cuentan con los suficientes elementos en el carrito para eliminar");
+        res.send("No se cuentan con los suficientes elementos en el carrito para eliminar");
     }
     
  }

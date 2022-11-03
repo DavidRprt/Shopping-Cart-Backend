@@ -13,7 +13,7 @@ const addToCart = async (req: Request, res: Response) => {
 
     // revisamos si el producto a agregar se encuentra en la base de datos
     if(!isItProducts){
-        res.json("El producto no se encuentra disponible");
+        res.send("El producto no se encuentra disponible");
     }
 
     // si el carrito no existe, lo creamos
@@ -33,7 +33,7 @@ const addToCart = async (req: Request, res: Response) => {
         
         // si el item esta en el carrito, no hacemos nada
         if(isInCart){
-            res.json("El producto ya se encuentra en el carrito");
+            res.send("El producto ya se encuentra en el carrito");
         }
 
         // si el item no esta en el carrito, lo agregamos

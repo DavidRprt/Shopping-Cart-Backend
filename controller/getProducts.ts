@@ -8,7 +8,7 @@ const getProducts = async (req: Request, res: Response) => {
   if (products) {
     res.json({ products });
   } else {
-    res.json({ mensaje: "No hay productos" });
+    res.send( "No hay productos" );
   }
 };
 

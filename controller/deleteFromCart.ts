@@ -11,13 +11,13 @@ const deleteFromCart = async (req: Request, res: Response) => {
     const isInCart = userCart.products.find((obj: any) => obj.productId.toLowerCase().replace(/\s/g, '') === requestData.name.toLowerCase().replace(/\s/g, ''));
     // primero revisamos si el usuario cuenta con un carrito
     if(!userCart){
-        res.json("El usuario no cuenta con ningun carrito");
+        res.send("El usuario no cuenta con ningun carrito");
     }
 
     else{
         // revisamos si el producto se encuentra en el carrito
         if(!isInCart){
-            res.json("El producto no se encuentra en el carrito");
+            res.send("El producto no se encuentra en el carrito");
         }
         // si el producto se encuentra en el carrito, lo eliminamos
         else{

@@ -10,7 +10,7 @@ const port = 3000
 
 app.use(express.json());  
 
-// Mongo DB conncetion
+// Mongo DB connection
 const database = process.env.MONGOLAB_URI;
 mongoose.connect(database, {useUnifiedTopology: true, useNewUrlParser: true })
 .then(() => console.log('Succesfully connected to db'))
