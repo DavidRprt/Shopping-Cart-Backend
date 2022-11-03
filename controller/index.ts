@@ -5,6 +5,8 @@ const addToCart = require("./addToCart");
 const deleteFromCart = require("./deleteFromCart");
 const getSingleCart = require("./getSingleCart");
 const changeAmount = require("./changeAmount");
+const addProduct = require("./addProducts");
+const deleteProduct = require("./deleteProduct");
 
 module.exports = {
   getProducts,
@@ -13,5 +15,7 @@ module.exports = {
   addToCart,
   deleteFromCart,
   getSingleCart,
-  changeAmount
+  changeAmount,
+  addProduct,
+  deleteProduct
 };

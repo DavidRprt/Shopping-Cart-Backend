@@ -27,10 +27,12 @@ app.get("/carts", controllers.getCart);
 app.get("/carts/:userId", controllers.getSingleCart); 
 
 app.post("/cart", controllers.addToCart);
+app.post("/products", controllers.addProduct);
 
 app.put("/cart/:productId/:userId/:amount?", controllers.changeAmount);
 
 app.delete("/cart/delete", controllers.deleteFromCart);
+app.delete("/products", controllers.deleteProduct);
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`)
