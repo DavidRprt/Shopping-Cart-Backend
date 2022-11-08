@@ -72,6 +72,22 @@ const productController = {
           res.status(404).send("El producto no existe en nuestro sitio web");
         }
       },
+
+      changeProduct: async (req: Request, res: Response) =>{
+        const requestData = req.body;
+        const products = await Product.find();
+        const singleProduct = await products.find((obj: any) => obj.name.toLowerCase().replace(/\s/g, '')==requestData.name.toLowerCase().replace(/\s/g, ''));
+        if (singleProduct){
+            singleProduct.price = requestData.price;
+            singleProduct.amount = requestData.amount;
+            singleProduct.save();
+            res.status(200).json(singleProduct);
+        }
+        else{
+            res.status(400).send("Por favor revise los datos ingresados");
+        }
+
+      }
 }
 
 module.exports = productController;

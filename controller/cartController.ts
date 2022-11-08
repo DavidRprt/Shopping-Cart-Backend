@@ -68,10 +68,15 @@ const cartController = {
     
             // si el item no esta en el carrito, lo agregamos
             else if (!isInCart){
+                if(isItProducts.amount > 0){
                 const orderObj = {"productId": requestData.name, "amount": requestData.amount}
                 userCart.products.push(orderObj);
                 userCart.save();
                 res.status(201).json(productsCart);
+              }
+              else{
+                res.status(400).send("No hay stock dispoible");
+              }
             }
             
         }
@@ -138,13 +143,13 @@ const cartController = {
       
        else{
           const singleProduct = userCart.products.find((obj: any) => obj.productId.toLowerCase().replace(/\s/g, '') === productId.toLowerCase().replace(/\s/g, '')); 
-          if (singleProduct.amount + amount >= 1){
+          if (singleProduct.amount + amount >= 1 && isItProducts.amount >= singleProduct.amount + amount){
               singleProduct.amount +=  amount;
               userCart.save();
               res.status(200).json(userCart);
           }
           else{
-              res.status(400).send("No se cuentan con los suficientes elementos en el carrito para eliminar");
+              res.status(400).send("No se cuentan con los suficientes elementos en el carrito para eliminar o no se cuenta con el stock disponible");
           }
           
        }
